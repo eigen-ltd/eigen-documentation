@@ -9,10 +9,10 @@ const site = process.env.SITE_URL || 'http://localhost:4321/';
 
 export const locales = {
   root: { label: 'English', lang: 'en' },
-  no: { label: 'Norsk', lang: 'no' },
-  pl: { label: 'Polski', lang: 'pl' },
-  es: { label: 'Español', lang: 'es' },
-  az: { label: 'Azərbaycanca', lang: 'az' },
+  // no: { label: 'Norsk', lang: 'no' },
+  // pl: { label: 'Polski', lang: 'pl' },
+  // es: { label: 'Español', lang: 'es' },
+  // az: { label: 'Azərbaycanca', lang: 'az' },
 };
 
 // https://astro.build/config
