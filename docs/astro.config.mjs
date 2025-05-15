@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeNova from 'starlight-theme-nova';
 import dotenv from 'dotenv';
+import AutoImport from 'astro-auto-import';
+import astroExpressiveCode from 'astro-expressive-code';
 
 dotenv.config();
 
@@ -21,8 +23,9 @@ export default defineConfig({
   integrations: [
     starlight({
       expressiveCode: {
-        themes: ['aurora-x', 'github-light'],
+        themes: ['dracula', 'min-light'],
         removeUnusedThemes: true,
+        useStarlightUiThemeColors: true,
       },
       title: 'Eigen Documentation',
       lastUpdated: true,
@@ -60,6 +63,33 @@ export default defineConfig({
         },
       ],
       plugins: [starlightThemeNova()],
+    }),
+
+    AutoImport({
+      imports: [
+        {
+          '@astrojs/starlight/components': [
+            'Aside',
+            'Badge',
+            'CardGrid',
+            'Card',
+            'FileTree',
+            'Icon',
+            'Steps',
+            'Tabs',
+            'TabItem',
+            // 'Code',
+          ],
+          'starlight-theme-nova/components': [
+            'Code',
+            'CodeFile',
+            'LinkButton',
+            'LinkCard',
+            'CodeTabItem',
+            'CodeTabs',
+          ],
+        },
+      ],
     }),
   ],
 });
