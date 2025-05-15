@@ -9,7 +9,7 @@ The API Configuration System allows users to define and execute API requests dyn
 
 Each API request is defined using a JSON configuration file. Below is an example of a typical configuration: beceause
 
-```yml
+```json
 {
   "url": "https://dummyjson.com/products/{{num}}",
   "type": "GET",
@@ -62,7 +62,7 @@ The API request's base URL, supporting **path parameters** wrapped in `{{ }}`.
 
 #### 2. Type
 
-```yml
+```ts
  "type": "GET" | "POST" | "POST_FORM"
 ```
 
@@ -70,7 +70,7 @@ Defines the HTTP method used for the request, **supporting:** `GET`, `POST` & `P
 
 #### 3. Inputs
 
-```yml
+```ts
 'inputs': [{}, {}]
 ```
 
@@ -80,12 +80,12 @@ Each input defines a parameter that can be part of the request. Inputs can be of
 
 Path Parameters are dynamic placeholders inside the URL path. They allow API requests to be flexible and retrieve specific resources based on the provided values.
 
-```yml
+```json
 {
-  'name': 'num',
-  'type': 'url',
-  'label': 'Product number',
-  'description': 'The number of the product to fetch',
+  "name": "num",
+  "type": "url",
+  "label": "Product number",
+  "description": "The number of the product to fetch"
 }
 ```
 
@@ -116,15 +116,15 @@ This would return data specific to the product with ID `5`.
 - Appended to the URL as key-value pairs (`?key=value`).
 - Example:
 
-```yml
+```json
 {
-  'name': 'test',
-  'type': 'get',
-  'label': 'Test',
-  'description': 'A test option',
-  'isRequired': true,
-  'isHidden': true,
-  'isConfigurable': true,
+  "name": "test",
+  "type": "get",
+  "label": "Test",
+  "description": "A test option",
+  "isRequired": true,
+  "isHidden": true,
+  "isConfigurable": true
 }
 ```
 
