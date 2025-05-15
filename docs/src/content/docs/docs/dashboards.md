@@ -65,19 +65,11 @@ Below is an example of a scaled dashboard in both normal view and edit
 mode. When viewed in a smaller window, all the elements will stay
 aligned with the tanks in the dashboard.
 
-<figure>
-<img src="~/assets/dashboards/image5.png"
-style="width:2.88611in;height:1.32917in"
-alt="A diagram of a machine AI-generated content may be incorrect." />
-<figcaption><p>Normal view:</p></figcaption>
-</figure>
+![A close-up of a logo Description automatically
+generated](~/assets/dashboards/image5.png)
 
-<figure>
-<img src="~/assets/dashboards/image6.png"
-style="width:2.88611in;height:1.38819in"
-alt="A diagram of a computer AI-generated content may be incorrect." />
-<figcaption><p>Edit mode:</p></figcaption>
-</figure>
+![A close-up of a logo Description automatically
+generated](~/assets/dashboards/image6.png)
 
 ### 1.2.3 Legacy dashboard
 
@@ -1069,13 +1061,8 @@ them together with lines.
 Unlike traditional graphics packages, Eigen Ingenuity 7 users can
 combine data from multiple different sources in one graphic.
 
-<figure>
-<img src="~/assets/dashboards/image91.png"
-style="width:4.94737in;height:3.31507in"
-alt="A screenshot of a computer Description automatically generated" />
-<figcaption><p>An example of a live graphic in “Edit” mode showing some
-of the available shapes.</p></figcaption>
-</figure>
+![A close-up of a logo Description automatically
+generated](~/assets/dashboards/image91.png)
 
 ## 4.1 Creating Graphics
 
