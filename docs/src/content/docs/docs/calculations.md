@@ -5,9 +5,9 @@ description: A guide to using calculations in Ingenuity for data transformation 
 
 GLOSSARY
 
-|     |                                                                                                                                                                                                                                   |     |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| KPI | Key Performance Indicator, also used as a generic term for visualisation components on a dashboard (e.g. Dial, Gauge, Status Indicator etc.)                                                                                      |
+||||
+|---|---|---|
+| KPI | Key Performance Indicator, also used as a generic term for visualisation components on a dashboard (e.g. Dial, Gauge, Status Indicator etc.) |
 | Tag | An industry term for the name (or ID) of the timeseries data for a sensor in a data historian. All equipment in a facility is "tagged" with a unique identifier, and these unique identifiers are commonly referred to as "tags". |
 
 # 1 Overview of Calculations
@@ -157,9 +157,11 @@ the two examples above to see the total amount of fluid pumped by Pump B
 in a year.
 
 ![Chart, line chart Description automatically
-generated](~/assets/calculations/image12.png)The virtual timeseries of the flow through
+generated](~/assets/calculations/image12.png)
+
+The virtual timeseries of the flow through
 Pump B is totalised in a second virtual timeseries over a window of a
-year starting at midnight on the 1^st^ January.
+year starting at midnight on the 1<sup>st</sup> January.
 
 ### 1.5.5 Taking the Maximum of several tags
 
@@ -186,82 +188,84 @@ can be a constant value or another timeseries source, or another
 calculation.
 
 **Basic Maths:**
-| Name | Syntax | Notes |
+| Name                       | Syntax                                         | Notes                          |
 |----------------------------|------------------------------------------------|--------------------------------|
-| Add | `ADD(a, b, ..., n)` | |
-| Subtract | `SUB(a, b, ..., n)` | Evaluated right to left (n - ... - b - a) |
-| Multiply | `MUL(a, b, ..., n)` | |
-| Divide | `DIV(a, b)` | Evaluated right to left (n / ... / b / a) |
-| Percent Deviation | `PERCENT(a, b)` | Evaluated as 100\*(a - b)/b |
+| Add                        | `ADD(a, b, ..., n)`                            |                                |
+| Subtract                   | `SUB(a, b, ..., n)`                            | Evaluated right to left (n - ... - b - a) |
+| Multiply                   | `MUL(a, b, ..., n)`                            |                                |
+| Divide                     | `DIV(a, b)`                                    | Evaluated right to left (n / ... / b / a) |
+| Percent Deviation          | `PERCENT(a, b)`                                | Evaluated as 100*(a - b)/b     |
 
 **Totalisers:**
-| Name | Syntax | Notes |
+| Name                       | Syntax                                         | Notes                          |
 |----------------------------|------------------------------------------------|--------------------------------|
-| Totalise | `TOTALISE(a, window, starttime, rate)` | See section 0-\* |
-| Totalise Raw | `TOTALISERAW(a, window, starttime, rate)` | See section 2.7.3 |
+| Totalise                   | `TOTALISE(a, window, starttime, rate)`        | See section 0-*                |
+| Totalise Raw               | `TOTALISERAW(a, window, starttime, rate)`     | See section 2.7.3              |
 
 **Function:**
-| Name | Syntax | Notes |
+| Name                       | Syntax                                         | Notes                          |
 |----------------------------|------------------------------------------------|--------------------------------|
-| Exponential | `EXP(input)` | See section 2.8.1 |
-| Natural Log | `LN(input)` | See section 2.8.2 |
-| Square Root | `sqrt(input)` | See section 2.8.3 |
-| Log | `LOG(input, b)` | See section 2.8.4 |
-| Power | `POWER(input, b)` | See section 2.8.5 |
+| Exponential                | `EXP(input)`                                   | See section 2.8.1              |
+| Natural Log                | `LN(input)`                                    | See section 2.8.2              |
+| Square Root                | `sqrt(input)`                                  | See section 2.8.3              |
+| Log                        | `LOG(input, b)`                                | See section 2.8.4              |
+| Power                      | `POWER(input, b)`                              | See section 2.8.5              |
 
 **Sliding Aggregates (normal and raw):**
-| Name | Syntax | Notes |
+| Name                       | Syntax                                         | Notes                          |
 |----------------------------|------------------------------------------------|--------------------------------|
-| Average | `SLIDINGAGG(input, AVG, window)` | See section 2.9.1 |
-| Count | `SLIDINGAGG(input, COUNT, window)` | See section 2.9.2 |
-| Number of Bad Points | `SLIDINGAGG(input, NUMBAD, window)` | See section 2.9.3 |
-| Number of Good Points | `SLIDINGAGG(input, NUMGOOD, window)` | See section 2.9.4 |
-| Standard Deviation | `SLIDINGAGG(input, STDEV, window)` | See section 2.9.5 |
-| Variance | `SLIDINGAGG(input, VAR, window)` | See section 2.9.6 |
-| Minimum | `SLIDINGAGG(input, MIN, window)` | See section 2.9.7 |
-| Maximum | `SLIDINGAGG(input, MAX, window)` | See section 2.9.8 |
-| Sum | `SLIDINGAGG(input, SUM, window)` | See section 2.9.9 |
-| DIFF | `SLIDINGAGG(input, DIFF, window)` | See section 2.9.10 |
+| Average                    | `SLIDINGAGG(input, AVG, window)`              | See section 2.9.1              |
+| Count                      | `SLIDINGAGG(input, COUNT, window)`            | See section 2.9.2              |
+| Number of Bad Points       | `SLIDINGAGG(input, NUMBAD, window)`           | See section 2.9.3              |
+| Number of Good Points      | `SLIDINGAGG(input, NUMGOOD, window)`          | See section 2.9.4              |
+| Standard Deviation         | `SLIDINGAGG(input, STDEV, window)`            | See section 2.9.5              |
+| Variance                   | `SLIDINGAGG(input, VAR, window)`              | See section 2.9.6              |
+| Minimum                    | `SLIDINGAGG(input, MIN, window)`              | See section 2.9.7              |
+| Maximum                    | `SLIDINGAGG(input, MAX, window)`              | See section 2.9.8              |
+| Sum                        | `SLIDINGAGG(input, SUM, window)`              | See section 2.9.9              |
+| DIFF                       | `SLIDINGAGG(input, DIFF, window)`             | See section 2.9.10             |
 
 **Windowed Aggregates:**
-| Name | Syntax | Notes |
+| Name                       | Syntax                                         | Notes                          |
 |----------------------------|------------------------------------------------|--------------------------------|
-| Same functions as SLIDINGAG| `SLIDINGAGG(input, function, window)` | See section 2.10 |
+| Same functions as SLIDINGAG| `SLIDINGAGG(input, function, window)`         | See section 2.10               |
 
 **Statistics:**
-| Name | Syntax | Notes |
+| Name                       | Syntax                                         | Notes                          |
 |----------------------------|------------------------------------------------|--------------------------------|
-| Maximum | `MAX(a, b, ..., n)` | See section 2.11.1 |
-| Minimum | `MIN(a, b, ..., n)` | See section 2.11.2 |
-| Mean | `MEAN(a, b, ..., n)` | See section 2.11.3 |
-| Median | `MEDIAN(a, b, ..., n)` | See section 2.11.4 |
-| Standard Deviation | `STDEV(a, b, ..., n)` | See section 2.11.5 |
-| Variance | `VAR(a, b, ..., n)` | See section 2.11.6 |
+| Maximum                    | `MAX(a, b, ..., n)`                            | See section 2.11.1             |
+| Minimum                    | `MIN(a, b, ..., n)`                            | See section 2.11.2             |
+| Mean                       | `MEAN(a, b, ..., n)`                           | See section 2.11.3             |
+| Median                     | `MEDIAN(a, b, ..., n)`                         | See section 2.11.4             |
+| Standard Deviation         | `STDEV(a, b, ..., n)`                          | See section 2.11.5             |
+| Variance                   | `VAR(a, b, ..., n)`                            | See section 2.11.6             |
 
 **Logical:**
-| Name | Syntax | Notes |
+| Name                       | Syntax                                         | Notes                          |
 |----------------------------|------------------------------------------------|--------------------------------|
-| If Tag Exists | `IFEXISTS(tag, aIfTrue)` | See section 2.12.1 |
-| If Equals | `IFEQUALS(tag, ifTrue, ifFalse, precision)` | See section 2.12.2 |
-| Threshold | `THRESHOLD(a, b, ifAboveOrEqual, ifBelow)` | See section 2.12.3 |
+| If Tag Exists              | `IFEXISTS(tag, aIfTrue)`                      | See section 2.12.1             |
+| If Equals                  | `IFEQUALS(tag, ifTrue, ifFalse, precision)`   | See section 2.12.2             |
+| Threshold                  | `THRESHOLD(a, b, ifAboveOrEqual, ifBelow)`    | See section 2.12.3             |
 
 **Series Conditioning:**
-| Name | Syntax | Notes |
+| Name                       | Syntax                                         | Notes                          |
 |----------------------------|------------------------------------------------|--------------------------------|
-| Stepped | `STEPPED(tag)` | See section 2.13.1 |
-| Stepped Raw | `STEPPEDRAW(tag)` | See section 2.13.2 |
-| No BAD | `NOBAD(tag)` | See section 2.13.3 |
-| Timeshift | `TIMESHIFT(tag, offset)` | See section 2.13.4 |
+| Stepped                    | `STEPPED(tag)`                                 | See section 2.13.1             |
+| Stepped Raw                | `STEPPEDRAW(tag)`                              | See section 2.13.2             |
+| No BAD                     | `NOBAD(tag)`                                   | See section 2.13.3             |
+| Timeshift                  | `TIMESHIFT(tag, offset)`                       | See section 2.13.4             |
 
 **Date:**
-| Name | Syntax | Notes |
+| Name                       | Syntax                                         | Notes                          |
 |----------------------------|------------------------------------------------|--------------------------------|
-| Epoch_Mx | `EPOCH_ISO(tag)` | See section 2.14 |
+| Epoch_Mx                   | `EPOCH_ISO(tag)`                               | See section 2.14               |
 
 **Other:**
-| Name | Syntax | Notes |
+| Name                       | Syntax                                         | Notes                          |
 |----------------------------|------------------------------------------------|--------------------------------|
-| Point in Time | `POINTINTIME(tag, timeReference)` | See section 2.15.1 |
+| Point in Time              | `POINTINTIME(tag, timeReference)`             | See section 2.15.1             |
+
+
 
 ## 2.2 Valid timeseries inputs
 
@@ -274,15 +278,15 @@ A valid timeseries source in Eigen Ingenuity is anything of the form
 historian/id
 ```
 
-#### _For example:_
+#### *For example:*
 
-|                           |                            |     |
-| ------------------------- | -------------------------- | --- |
-| enterprise historian:     | `ip21/21PI1234.val`        |
-| an open source historian: | `influx/kitchen_temp`      |
-| a calculation:            | `calc/ADD(15,24,35)`       |
-| signal generator outputs: | `siggen/rand10\~5@3600000` |
-| constant values:          | `value/10`                 |
+||||
+|---|---|---|
+| enterprise historian: | `ip21/21PI1234.val`
+| an open source historian: | `influx/kitchen_temp`
+| a calculation: | `calc/ADD(15,24,35)`
+| signal generator outputs: | `siggen/rand10\~5@3600000`
+| constant values: | `value/10`
 
 Constant values are a special case in that there is no need to prefix
 them with "value/" as the system will do that automatically.
@@ -306,15 +310,15 @@ following are valid in all cases:
 >
 > y: year
 
-#### _For example:_
+#### *For example:*
 
-|                   |             |
-| ----------------: | :---------- |
-|         1 second: | `1s`        |
-|         1 minute: | `1m or 60s` |
-|           7 days: | `7d or 1w`  |
-| 1 calendar month: | `1mo`       |
-|          6 hours: | `6h`        |
+|  |  |
+|-----------:|:------------|
+| 1 second: | `1s` |
+| 1 minute: | `1m or 60s` |
+| 7 days: | `7d or 1w` |
+| 1 calendar month: | `1mo` |
+| 6 hours: | `6h` |
 
 ## 2.4 Relative Time Expressions
 
@@ -377,13 +381,12 @@ interpolated points on a trend (this can be changed in the trend
 configuration) to ensure that a trend will always load and then the user
 can decide to switch to raw points.
 
-## 2.6 Basic Maths
+## 2.6 Basic Maths 
 
 ### 2.6.1 Add, Subtract, Multiply, Divide
 
 These functions take a list of inputs separated by commas. The syntax
 for the Basic Maths functions ADD, SUB, MUL and DIV is:
-
 ```
 ADD(a, b,..., n)
 
@@ -393,37 +396,30 @@ MUL(a, b,..., n)
 
 DIV(a, b,..., n)
 ```
-
-> **a, b,.. n** -- any valid timeseries input (see section 2.2)
+> **a, b,.. n** -- any valid timeseries input (see [section 2.2](#22-valid-timeseries-inputs))
 
 The inputs are processed from right to left which means that the SUB and
 DIV functions will return different results depending on the order of
 the inputs:
-
 ```
 DIV(10, 8) = 1.25
 
 DIV(8, 10) = 0.8
 ```
-
 ### 2.6.2 Percent Deviation
 
 This function returns the percent deviation of input b from input a. The
 syntax for the PERCENTDEV function is:
-
 ```
 PERCENTDEV(a, b)
 ```
-
 It is evaluated as 100 \*(a-b)/b. For example:
-
 ```
 PERCENTDEV(10, 8) = 25
 
 PERCENTDEV(8, 10) = -20
 ```
-
-## 2.7 Totalisers
+## 2.7 Totalisers 
 
 The Totalise functions integrate the area under a trend over the
 specified window and starting at a specified time. For example,
@@ -458,25 +454,25 @@ The syntax for the TOTALISE function is:
 TOTALISE(input, window, windowAnchor, rate)
 ```
 
-- **input** -- any valid timeseries input (see section 2.2)
+- **input** -- any valid timeseries input (see [section 2.2](#22-valid-timeseries-inputs))
 
-- **window** - a window size to totalise over (fixed amount of
+- **window** -- a window size to totalise over (fixed amount of
   seconds/minutes/hours/days)
 
 - **windowOffsetOrAnchor** -- where this window should be placed and is
   as an offset from 00:00:00 GMT
 
-- **rate** - - time unit for underlying tag, if it is m3/s then the time
+- **rate** -- time unit for underlying tag, if it is m3/s then the time
   unit is seconds, so you would write "1s", if m3/h then unit is hours,
   so you would write "1h" (required to properly scale result)
 
-#### _Window Definition_
+#### *Window Definition*
 
 The Window can be defined as:
 
-- an exact time definition (1s, 12h, 7d, 1w) --see section 2.2
+- an exact time definition (1s, 12h, 7d, 1w) -- see [section 2.2](#22-valid-timeseries-inputs)
 
-#### _windowAnchor definition_
+#### *windowAnchor definition*
 
 This defines where the start of the totalisation is placed. The options
 are:
@@ -485,14 +481,14 @@ are:
   and positive values shift it later (e.g. -02:00 to align with European
   summer time - CEST)
 
-  Note: This option will not automatically adjust for daylight savings
-  time when the clocks shift back in the autumn.
+  *Note: This option will not automatically adjust for daylight savings
+  time when the clocks shift back in the autumn.*
 
 - a fixed point in time with optionally specified timezone in the format
   "YYYY-MM-DD hh:mm:ss ZZZz" (e.g. 2024-04-01 00:00:00 CEST).
 
-  Note: This option is the least efficient as the algorithm will go back
-  to this date every time it is evaluated
+  *Note: This option is the least efficient as the algorithm will go back
+  to this date every time it is evaluated*
 
 ### 2.7.2 TOTALISE2
 
@@ -510,9 +506,9 @@ The syntax for the TOTALISE2 function is:
 
 TOTALISE2(input, window, windowOffsetOrAnchor, rate)
 
-- **input** -- any valid timeseries input (see section 2.2)
+- **input** -- any valid timeseries input (see [section 2.2](#22-valid-timeseries-inputs))
 
-- **window** - a window size to totalise over (fixed amount of
+- **window** -- a window size to totalise over (fixed amount of
   seconds/minutes/hours/days)
 
 - **windowOffsetOrAnchor** -- where this window should be placed this
@@ -520,11 +516,11 @@ TOTALISE2(input, window, windowOffsetOrAnchor, rate)
   offset from 00:00:00 GMT, as an expression of time or as a dynamic
   offset from the current time.
 
-- **rate** - time unit for underlying tag, if it is m3/s then the time
+- **rate** -- time unit for underlying tag, if it is m3/s then the time
   unit is seconds, so you would write "1s", if m3/h then unit is hours,
   so you would write "1h" (required to properly scale result)
 
-#### _Window Definition_
+#### *Window Definition*
 
 The Window can be defined as:
 
@@ -541,7 +537,7 @@ The Window can be defined as:
 >
 > YEAR: defaults to midnight of 1st of january until begin of next year
 
-- an exact time definition (1s, 7d, 1mo) --see section 2.2
+- an exact time definition (1s, 7d, 1mo) -- see [section 2.2](#22-valid-timeseries-inputs)
 
 To use this or the following options select "Other" in the Window size
 definition dropdown:
@@ -555,7 +551,7 @@ generated](~/assets/calculations/image14.png)
 
 - by passing millisecond value (3600000 for 1h)
 
-#### windowOffsetOrAnchor definition
+#### *windowOffsetOrAnchor definition*
 
 This defines where the start of the totalisation is placed. The options
 are:
@@ -563,21 +559,21 @@ are:
 - Text expressions BEGIN_DAY, BEGIN_MONTH, BEGIN_QUARTER or BEGIN_YEAR
   will anchor window to the beginning of current period.
 
-  Note: This option is the most popular and will adjust for daylight
-  savings time and the variable length of months
+  *Note: This option is the most popular and will adjust for daylight
+  savings time and the variable length of months*
 
 - an offset from 00:00:00 GMT. Negative values shift the start earlier,
   and positive values shift it later (e.g. -02:00 to align with European
   summer time - CEST)
 
-  Note: This option will not automatically adjust for daylight savings
-  time when the clocks shift back in the autumn.
+  *Note: This option will not automatically adjust for daylight savings
+  time when the clocks shift back in the autumn.*
 
 - a fixed point in time with optionally specified timezone in the format
   "YYYY-MM-DD hh:mm:ss ZZZz" (e.g. 2024-04-01 00:00:00 CEST).
 
-  Note: This option is the least efficient as the algorithm will go back
-  to this date every time it is evaluated
+  *Note: This option is the least efficient as the algorithm will go back
+  to this date every time it is evaluated*
 
 - Dynamic offset: Entering a time expression results in the start time
   of the window being changed dynamically to \[now+dynamic offset\]. For
@@ -587,7 +583,7 @@ are:
   "window")\
   Entering "-2h" will give the total over the "window" 2 hours ago.
 
-#### Examples
+#### *Examples*
 
 ```
 calc/TOTALISE(tag, YEAR, BEGIN_YEAR, 1h)
@@ -605,32 +601,26 @@ will calculate intergral since beginning of current year, starting from
 
 ```
 calc/TOTALISE(1, 1d, 00:00:00, 1h)
-
 = 24 at 23:59:59.999
 
 calc/TOTALISE(1, DAY, BEGIN_DAY, 1d)
-
 = 1 at 23:59:59.999
 
 calc/TOTALISE(1, QUARTER, BEGIN_QUARTER, 1d)
-
 = 90 at 2023-03-31 23:59:59.999
-
 = 91 at 2023-06-30 23:59:59.999
-
 = 92 at 2023-09-30 23:59:59.999
-
 = 92 at 2023-12-31 23:59:59.999
 ```
 
 **TIP**
 
-There are some scenarios where the underlying data needs to be treated
+*There are some scenarios where the underlying data needs to be treated
 as stepped, for example an annual forecast that has a single value for
 each month at the start of the month. Linearly interpolating between
 these values will result in errors and so it may be necessary to wrap
 the tag in a STEPPED() calculation or use TOTALISERAW to make sure that
-the data is properly interpolated and totalized.
+the data is properly interpolated and totalized.*
 
 ### 2.7.3 Totalise Raw
 
@@ -641,27 +631,27 @@ slow performance if there is a lot of data, but it will be very
 accurate. This might be preferable if the value is to be used in a
 report.
 
-## 2.8 Functions
+## 2.8 Functions 
 
 The mathematical functions give access to the common operations for
 analysing data and evaluating formulae. The EXP, LN and SQRT functions
 take the form:
-
+```
 fn(input)
-
-> **input** any valid timeseries input (see section 2.2)
+```
+> **input** any valid timeseries input (see [section 2.2](#22-valid-timeseries-inputs))
 
 The LOG and POWER functions require a second input and the syntax is:
-
+```
 fn(input, b)
-
-> **input** any valid timeseries input (see section 2.2)
+```
+> **input** any valid timeseries input (see [section 2.2](#22-valid-timeseries-inputs))
 >
-> **b** any valid timeseries input (see section 2.2)
+> **b** any valid timeseries input (see [section 2.2](#22-valid-timeseries-inputs))
 
-### 2.8.1 EXP: Exponential, e^x^
+### 2.8.1 EXP: Exponential, e<sup>x</sup>
 
-The term \"exp(x)\" is the same as writing e^x^ or ℯ\^x or \"e to the
+The term \"exp(x)\" is the same as writing e<sup>x</sup> or ℯ\^x or \"e to the
 x\" or \"ℯ to the power of x\". In this context, \"ℯ\" is a universal
 constant, ℯ = 2.718281828...
 
@@ -669,22 +659,22 @@ constant, ℯ = 2.718281828...
 calc/EXP(input)
 ```
 
-#### _Example_
+#### *Example*
 
 ```
 calc/EXP(10) = 22,026.465...
 ```
 
-### 2.9 LN: Natural Log, ln()
+### 2.8.2 LN: Natural Log, ln()
 
 The Natural Log is the inverse of the Exponential function. I.e.
-ln(ℯ^x^) = x. The syntax for the LN function is:
+ln(ℯ<sup>x</sup>) = x. The syntax for the LN function is:
 
 ```
 calc/LN(input)
 ```
 
-#### _Example_
+#### *Example*
 
 ```
 calc/LN(5) = 1.609...
@@ -692,7 +682,7 @@ calc/LN(5) = 1.609...
 calc/LN(EXP(10)) = 10
 ```
 
-#### _Important notes_
+#### *Important notes*
 
 The following should be noted:
 
@@ -713,21 +703,21 @@ The following should be noted:
 
 - ln(e)=1
 
-- ln(e^x^) = x
+- ln(e<sup>x</sup>) = x
 
-- e^ln(x)=^x
+- e<sup>ln(x)</sup>=x
 
-### 2.10 SQRT: Square Root, √x
+### 2.8.3 SQRT: Square Root, √x
 
 Square root of a number is a value, which on multiplication by itself,
 gives the original number. The square root is an inverse method of
-squaring a number i.e. x^2^. The syntax for the SQRT function is:
+squaring a number i.e. x<sup>2</sup>. The syntax for the SQRT function is:
 
 ```
 calc/SQRT(input)
 ```
 
-#### _Example_
+#### *Example*
 
 ```
 calc/SQRT(16) = 4
@@ -735,14 +725,14 @@ calc/SQRT(16) = 4
 
 **TIP**
 
-_The square root function is equivalent to raising a number to the power
-of ½:_
+*The square root function is equivalent to raising a number to the power
+of ½:*
 
 ```
 SQRT(x) ≡ POW(x,0.5)
 ```
 
-### 2.11 LOG: Logarithm Log~y~(x)
+### 2.8.4 LOG: Logarithm Log<sub>y</sub>(x)
 
 **The Logarithm** is the exponent or power to which a base (b) must be
 raised to return a given number (x).
@@ -756,12 +746,12 @@ calc/LOG(input, b)
 ```
 
 > **input** the number for which to find the LOG - any valid timeseries
-> input (see section 2.2)
+> input (see [section 2.2](#22-valid-timeseries-inputs))
 >
 > **b** the base in which to calculate -- any constant or valid
-> timeseries (see section 2.2)
+> timeseries (see [section 2.2](#22-valid-timeseries-inputs))
 
-#### _Example_
+#### *Example*
 
 ```
 calc/LOG(100,10) = 2
@@ -769,11 +759,11 @@ calc/LOG(100,10) = 2
 calc/LOG(8,2) = 3
 ```
 
-### 2.11 POW: Power, x^y^
+### 2.8.5 POW: Power, x<sup>y</sup>
 
-The POWER function multiplies a number (_x_) by itself a specified
-number of times (_b_). This is often called raising _x_ to the power of
-_b_. It is the inverse of the LOG function
+The POWER function multiplies a number (*x*) by itself a specified
+number of times (*b*). This is often called raising *x* to the power of
+*b*. It is the inverse of the LOG function
 
 $$x^{b}$$
 
@@ -783,18 +773,18 @@ The syntax for the POW function is:
 calc/POW(input, b)
 ```
 
-> **input** the number to multiply (_x_) - any valid timeseries input
-> (see section 2.2)
+> **input** the number to multiply (*x*) - any valid timeseries input
+> (see [section 2.2](#22-valid-timeseries-inputs))
 >
 > **b** the power, the number of times to multiply the input by itself--
-> any constant or valid timeseries (see section 2.2)
+> any constant or valid timeseries (see [section 2.2](#22-valid-timeseries-inputs))
 
-#### _Example_
+#### *Example*
 
 ```
-calc/POW(100,2) = 100
+calc/POW(10,2) = 100
 
-calc/POW(100,-2) = 0.01
+calc/POW(10,-2) = 0.01
 
 calc/POW(2,3) = 8
 
@@ -803,36 +793,36 @@ calc/POW(25,0.5) = 5
 
 ## 2.9 Sliding Aggregates
 
-The SlidingAggregate functions perform an aggregate _operation_ on a
-single _input_, over a _window_. The general construct for SLIDINGAGG
+The SlidingAggregate functions perform an aggregate *operation* on a
+single *input*, over a *window*. The general construct for SLIDINGAGG
 functions is:
 
 ```
 SLIDINGAGG(input, operation, window)
 ```
 
-> **input** an integer or any valid timeseries source
+> **input** -- an integer or any valid timeseries source
 >
-> **operation** the short name for one of the operators listed below
+> **operation** -- the short name for one of the operators listed below
 > (AVG, COUNT, NUMGOOD, NUMBAD, STDDEV, VAR, MIN, MAX, SUM, DIFF)
 >
-> **window** any valid time input --see section 2.2
+> **window** -- any valid time input -- see [section 2.2](#22-valid-timeseries-inputs)
 
 **TIP**
 
-_SLIDINGAGG functions are the most data-hungry calculations and can
+*SLIDINGAGG functions are the most data-hungry calculations and can
 cause memory problems with either very large window sizes, or, very
 large time periods with a small window size (e.g. a 2 year trend with a
 window size of 1hr). If you need to view trends over large periods,
 consider restructuring the calculation to reduce the number of points
-the SLIDINGAGG function needs to call._
+the SLIDINGAGG function needs to call.*
 
 The function returns the result of the operation over the period of the
 window immediately preceding the current time. When trending a
 SLIDINGAGG function, the window is always anchored to beginning of the
 trend time range.
 
-#### _Example_
+#### *Example*
 
 ```
 SLIDINGAGG(input, AVG, window)
@@ -859,7 +849,7 @@ SLIDINGAGG(input, AVG, window)
 ### 2.9.2 COUNT: Count
 
 Returns the count of the number of points in the window. The syntax for
-a sliding aggregate COUNT function is::
+a sliding aggregate COUNT function is:
 
 ```
 SLIDINGAGG(input, COUNT, window)
@@ -953,12 +943,12 @@ The syntax of the WINDOWAGG function is:
 calc/WINDOWAGG(input, operation, window)
 ```
 
-> **input** an integer or any valid timeseries source
+> **input** -- an integer or any valid timeseries source
 >
-> **operation** the short name for one of the operators listed below
+> **operation** -- the short name for one of the operators listed below
 > (AVG, COUNT, , NUMBAD, STDDEV, VAR, MIN, MAX, SUM, DIFF)
 >
-> **window** any valid time input --see section 2.2
+> **window** -- any valid time input -- see [section 2.2](#22-valid-timeseries-inputs)
 
 The available operations for WINDOWAGG are AVG, MIN, MAX, COUNT, STDDEV,
 VAR. The functions as the same as for the SLIDINGAG calculation.
@@ -994,53 +984,53 @@ tags, not on other calculations.]{.underline}]{.mark}
 These functions take a list of inputs separated by commas and will
 return the result of the function across all the inputs at each point in
 time:
-
+```
 function(a,b,..,n)
-
+```
 The order of the inputs is not important
 
 ### 2.11.1 MAX: Maximum
 
 The minimum of all the inputs at each point in time. The syntax for a
 MAX function is:
-
+```
 MAX(8,7,4) = 8
-
+```
 ### 2.11.2 MIN: Minimum
 
 The minimum of all the inputs at each point in time. The syntax for a
 MIN function is:
-
+```
 MIN(8,7,4) = 4
-
+```
 ### 2.11.3 MEAN: Mean
 
 The mean of all the inputs at each point in time. The syntax for a MEAN
 function is:
-
+```
 MEAN(8,7,4) = 6.33
-
+```
 ### 2.11.4 MEDIAN: Median
 
 The median of all the inputs at each point in time. The syntax for a
 MEDIAN function is:
-
+```
 MEDIAN(8,7,4) = 7
-
+```
 ### 2.11.5 STDDEV: Standard Deviation
 
 The standard deviate of all the inputs at each point in time. The syntax
 for a STDDEV function is:
-
+```
 STDDEV(8,6,4) = 2
-
+```
 ### 2.11.6 VARIANCE: Variance
 
 The standard deviate of all the inputs at each point in time. The syntax
 for a VARIANCE function is:
-
+```
 VARIANCE(8,6,4) = 4
-
+```
 ## 2.12 Logical
 
 The Logical functions allow the user to change the data that is returned
@@ -1053,14 +1043,14 @@ This function prevents errors where a valid timeseries does not exist.
 If a valid dataset is returned then it is returned by the function,
 otherwise the specified response is provided. The syntax for an
 IFTAGEXISTS function is:
-
+```
 IFTAGEXISTS(a, ifFalse)
-
-> **a** a constant or timeseries source to check and return if valid --
-> see section 2.2
+```
+> **a** -- a constant or timeseries source to check and return if valid --
+> see [section 2.2](#22-valid-timeseries-inputs)
 >
-> **ifFalse** a constant or any valid timeseries source to return if (a)
-> is invalid -- see section 2.2
+> **ifFalse** -- a constant or any valid timeseries source to return if (a)
+> is invalid -- see [section 2.2](#22-valid-timeseries-inputs)
 
 ### 2.12.2 IFEQUALS: If Equals\*\* CHANGE WHEN CALC IS UPDATED\*\*
 
@@ -1071,17 +1061,15 @@ is:
 
 IFEQUALS(a, b, ifTrue, ifFalse, \<precision\>)
 
-> **a** a constant or any valid timeseries source -- see section 2.2
+> **a** -- a constant or any valid timeseries source -- see [section 2.2](#22-valid-timeseries-inputs)
 >
-> **b** a constant or any valid timeseries source -- see section 2.2
+> **b** -- a constant or any valid timeseries source -- see [section 2.2](#22-valid-timeseries-inputs)
 >
-> **ifTrue** a constant or any valid timeseries source -- see section
-> 2.2
+> **ifTrue** -- a constant or any valid timeseries source -- see [section 2.2](#22-valid-timeseries-inputs)
 >
-> **ifFalse** a constant or any valid timeseries source -- see section
-> 2.2
+> **ifFalse** -- a constant or any valid timeseries source -- see [section 2.2](#22-valid-timeseries-inputs)
 >
-> **precision** OPTIONAL a number specifying the tolerance as either an
+> **precision** -- OPTIONAL a number specifying the tolerance as either an
 > absolute value or a % tolerance of the average of a & b to apply to
 > the IFEQUALS test. Default = 0.01%.
 
@@ -1089,20 +1077,20 @@ IFEQUALS(a, b, ifTrue, ifFalse, \<precision\>)
 
 In order to keep it simple and make sure that the order of the numbers
 is not important, the precision is calculated as:
-
+```
 Precision absolute abs\|(a-b)\|
 
 Precision percent abs\|(a-b)/((a+b)/2)\|\*100
-
+```
 i.e. the percentage is the deviation from the average of the two
 numbers.
 
 **TIP**
 
-_Where an exact deviation is required, for example ±20 against a value
-of 100, then a precision of 20 should be specified, not 20%._
+*Where an exact deviation is required, for example ±20 against a value
+of 100, then a precision of 20 should be specified, not 20%.*
 
-#### _Important Note_
+#### *Important Note*
 
 The way the precision percentage is calculated means that the absolute
 deviation is slightly asymmetric and ranges from a lower percentage for
@@ -1117,17 +1105,17 @@ calc/IFEQUALS(100,b,1,0,20%) = 1
 
 This means finding the highest and lowest values of b that make the
 following expression evaluate to 20:
-
+```
 abs\|(100-b)/((100+b)/2)\|\*100
-
+```
 Evaluating this gives
-
+```
 81.8 \< b \< 122.2
-
+```
 Which ,as a percentage of 100, ranges from 18.2% below up to 22.2%
 above.
 
-#### _Examples_
+#### *Examples*
 
 Using an absolute value of 20 for the precision returns the ifTrue
 result:
@@ -1137,9 +1125,9 @@ calc/IFEQUALS(80,100,1,0,20) = 1
 ```
 
 because the difference is 20:
-
+```
 abs\|(80-100)\|= 20
-
+```
 Using a percentage of 20% as the precision returns the ifFalse value:
 
 ```
@@ -1147,10 +1135,10 @@ calc/IFEQUALS(80,100,1,0,20%) = 0
 ```
 
 because the difference is 22.2%:
-
+```
 abs\|(80-100)/((80+100)/2)\|= 20/90 = 22.2%
-
-#### _Use cases_
+```
+#### *Use cases*
 
 Returning a binary status if a value is within an expected range. For
 example, a pressure should be 100 ±10%
@@ -1164,10 +1152,10 @@ calc/IFEQUALS(100,PressureReading,1,0,10)
 This function compares two inputs (a & b) and returns one timeseries a
 is equal or greater than b, and a different one if it is lower. The
 syntax for a THRESHOLD function is:
-
+```
 THRESHOLD(a, b, ifaboveorequal, ifbelow)
-
-#### _Example_
+```
+#### *Example*
 
 ```
 calc/THRESHOLD(100,50,1,0) = 0
@@ -1179,7 +1167,7 @@ calc/THRESHOLD(100,80,1,20) = 20
 calc/THRESHOLD(80,100,1,20) = 1
 ```
 
-#### _Use cases_
+#### *Use cases*
 
 Flow masking -- return the value of a flowmeter if a valve is open,
 otherwise return zero. This is useful where a flowmeter does not read
@@ -1211,7 +1199,7 @@ follows:
 calc/TIME_THRESHOLD(timestamp, before_tag, after_tag)
 ```
 
-#### _Use cases_
+#### *Use cases*
 
 A well designation was changed from producer to injector and a new
 historian tag was introduced to record wellhead pressure for the new
@@ -1247,16 +1235,16 @@ that identifies a tag as discreet (Boolean, Digital, on/off etc.)
 
 **TIP**
 
-_If tag is configured as stepped in the source, this calc will do
-nothing and is not necessary._
+*If tag is configured as stepped in the source, this calc will do
+nothing and is not necessary.*
 
 The syntax for a STEPPED function is:
-
+```
 STEPPED(a)
+```
+> **a** -- any valid timeseries source -- see [section 2.2](#22-valid-timeseries-inputs)
 
-> **a** any valid timeseries source -- see section 2.2
-
-#### _Example_
+#### *Example*
 
 The example below shows that without using the STEPPED function the
 RUNNING_STATUS shows an implausible value of 0.38 when trended because
@@ -1280,34 +1268,30 @@ mode.
 This is especially useful for reports where one needs to return an
 accurate total.
 
-#### _Use case_
+#### *Use case*
 
 Forcing a TOTALISE calculation to correctly sum a forecast over a month.
 If the forecast has the following data:
 
-Month Rate Monthly Vol.
+| Month | Rate | Monthly Vol.
+| ----- | ---- | ----- 
+| 01-Jan 00:00 | 1 m3/d | 31 m3
+| 01-Feb 00:00 | 0 m3/d | 0 m3
 
-\-\-\-\-\-\-\-\-\-\-\-- \-\-\-\-\-\-\-\-\-\-\-\--
-\-\-\-\-\-\-\-\-\-\-\-\--
-
-01-Jan 00:00 1 m3/d 31 m3
-
-01-Feb 00:00 0 m3/d 0 m3
-
-If the Forecast rate is totalised for January _without_ forcing the data
+If the Forecast rate is totalised for January *without* forcing the data
 to be stepped, then the totalizer will interpolate between 1 and 0 over
 January and the result will be:
-
+```
 TOTALISE(Rate, MONTH, BEGIN_MONTH, 1d) = 15.5
-
+```
 ![A line graph with a blue line Description automatically
 generated](~/assets/calculations/image20.png)
 
 If the Rate is wrapped in a STEPPEDRAW tag it will force the calculation
 to step the underlying data and the result will be correct.
-
+```
 TOTALISE(STEPPEDRAW(Rate), MONTH, BEGIN_MONTH, 1d) = 31
-
+```
 ![A white rectangular object with blue border Description automatically
 generated](~/assets/calculations/image21.png)
 
@@ -1318,10 +1302,10 @@ quality according to the OPC standard[^2] (possible options are Good,
 Uncertain or Bad) in Raw mode only.
 
 The syntax for a NOBAD function is:
-
+```
 NOBAD(a)
-
-> **a** any valid timeseries source -- see section 2.2
+```
+> **a** -- any valid timeseries source -- see [section 2.2](#22-valid-timeseries-inputs)
 
 This function has very limited use cases but can help if a tag has
 randomly incorrect data (i.e. both positive and negative) that cannot be
@@ -1341,9 +1325,9 @@ function is:
 TIMESHIFT(a, offset)
 ```
 
-> **a** any valid timeseries source -- see section 2.2
+> **a** -- any valid timeseries source -- see [section 2.2](#22-valid-timeseries-inputs)
 >
-> **offset** an expression describing how far to shift the data back in
+> **offset** -- an expression describing how far to shift the data back in
 > time -- see below for options
 
 The offset is the amount of time that the source data is away from the
@@ -1367,8 +1351,7 @@ an earlier point in time:
 
 - number of milliseconds (3600000 = 1 hour)
 
-- an exact time definition (1s, 1h, 7d etc.) --see section 2.2 Values
-  can be both positive and negative.
+- an exact time definition (1s, 1h, 7d etc.) -- see [section 2.2](#22-valid-timeseries-inputs) Values can be both positive and negative.
 
 - A time expression in hh:mm or hh:mm:ss. For example, to correct a
   value that is 2minutes and 14 secs slow you would use -00:02:14
@@ -1376,17 +1359,17 @@ an earlier point in time:
 -  java-style durations and periods, e.g. P1D for calendar
   day, PT24H for exactly 24 hours
 
-- relative time expressions, like _"2 hours ago" --_ see section 2.4.
+- relative time expressions, like *"2 hours ago" --* see [section 2.4](#24-relative-time-expressions).
 
--
+- 
 
-#### _Examples_
+#### *Examples*
 
 Retrieve value of tag at end of previous day:
-
+```
 \"calc/TIMESHIFT(calc/TOTALISE2(constants/1, MONTH, BEGIN_MONTH,
 1d), **last moment of yesterday**)\",
-
+```
 Retrieve value of tag at end of previous day **relative to another
 date**
 
@@ -1411,7 +1394,7 @@ The syntax for an EPOCH_MS function is:
 calc/EPOCH_MS(tag)
 ```
 
-#### _Examples_
+#### *Examples*
 
 Calculate the number of hours between now and the most recent point
 stored in the tag:
@@ -1425,7 +1408,7 @@ from the current time, which will return the number of milliseconds
 difference. This is then divided by 3,600,000, which is the number of
 milliseconds in an hour.
 
-## 2.15 Other
+## 2.15 Other 
 
 ### 2.15.1 POINTINTIME: Point in Time
 
@@ -1437,9 +1420,9 @@ in a flat line in a trend. The syntax for POINTINTIME is:
 POINTINTIME(a, timereference)
 ```
 
-> **a** any valid timeseries source -- see section 2.2
+> **a** -- any valid timeseries source -- see [section 2.2](#22-valid-timeseries-inputs)
 >
-> **timereference** an expression describing how far to shift the data
+> **timereference** -- an expression describing how far to shift the data
 > back in time -- see below for options
 
 The timereference can be defined in several ways:
@@ -1448,19 +1431,18 @@ The timereference can be defined in several ways:
 
   - number of milliseconds (3600000 = 1 hour)
 
-  - an exact time definition (-1s, -1h, -7d etc.) --see section 2.2
+  - an exact time definition (-1s, -1h, -7d etc.) -- see [section 2.2](#22-valid-timeseries-inputs)
 
-  - relative time expressions, like _"2 hours ago" --_ see section 2.4.
+  - relative time expressions, like *"2 hours ago" --* see [section 2.4](#24-relative-time-expressions).
 
 - As a point in time :
 
   - As a timestamp expression in hh:mm or hh:mm:ss. E.g. 00:00 for
     midnight this morning
 
-  - relative time expressions, like _"last moment of yesterday" --_ see
-    section 2.4.
+  - relative time expressions, like *"last moment of yesterday" --* see [section 2.4](#24-relative-time-expressions).
 
-#### _Examples_
+#### *Examples*
 
 To return the value of a tag at 23:59:59.999 the previous day, the
 POINTINTTIME syntax is:
@@ -1484,23 +1466,22 @@ the dates historian are:
 ```
 dates/CURRENT_EPOCH_MS:
 ```
-
 > Return current time in epoch ms
 
 ```
 dates/IS_TODAY:
 ```
+> Return 1 if given timestamp is today. When trended this will always be zero until the time on the x-axis is today
 
-> Return 1 if given timestamp is today. When trended this will always be
-> zero until the time on the x-axis is today
+```
+dates/IS_BEFORE_TODAY:
+```
+> The opposite of IS_TODAY
 
-dates/IS_BEFORE_TODAY:\
-The opposite of IS_TODAY
-
-dates/DAYS_IN_MONTH:\
-Returns the number of days in the month of the time requested. When
-trended this will show a stepped trend of the days in the month for the
-time on the x-axis
+```
+dates/DAYS_IN_MONTH:
+```
+> Returns the number of days in the month of the time requested. When trended this will show a stepped trend of the days in the month for the time on the x-axis
 
 ## 2.17 Signal Generator Historian (siggen)
 
@@ -1510,10 +1491,10 @@ example the saw wave can be used to convert a daily forecast into a ramp
 showing the forecast to that point in the day).
 
 The syntax is (without the spaces):
-
+```
 function amplitude +/- y-offset @ period +/- x-offset (in milliseconds)
-
-e.g. sin10-30@600-3600000 --- sinewave of amplitude -10 to 10; offset by
+```
+e.g. `sin10-30@600-3600000` -- sinewave of amplitude -10 to 10; offset by
 -30 (i.e. between -40 and -20); with a period of 600 seconds; offset by
 -3600000 milliseconds (1 hr)
 
@@ -1527,7 +1508,7 @@ Function supported are:
 
 - saw (saw wave) -- useful to modify daily values
 
-- sq (square wave) - useful as an on/off signal
+- sq (square wave) -- useful as an on/off signal
 
 - sc (S-curve)
 
@@ -1583,7 +1564,7 @@ use in the "Tag alias name" field.
 ![A screenshot of a computer Description automatically
 generated](~/assets/calculations/image27.png)
 
-Note: it is good practice not to have spaces in the Tag alias name.
+*Note: it is good practice not to have spaces in the Tag alias name.*
 
 ## 3.5 Editing a Tag Alias
 
@@ -1626,15 +1607,15 @@ between them though, and these are described below.
 
 **Tip**
 
-**_SLIDINGAGG provides a moving aggregation based on a time window over
+**SLIDINGAGG provides a moving aggregation based on a time window over
 interpolated points, suitable for real-time trends, while WINDOWAGG
 provides aggregations over fixed time windows, retrieved directly from
 the historian, and is generally more appropriate for retrospective
-analysis._**
+analysis.**
 
 ### 4.1.1 Differences
 
-#### _Data Source for Calculation:_
+#### *Data Source for Calculation:*
 
 SLIDINGAGG calculations are performed over **interpolated points**
 retrieved from the historian . The system retrieves a range of points
@@ -1646,7 +1627,7 @@ support direct aggregate retrieval for the specified window, the Eigen
 historian driver will simulate it by fetching raw data and performing
 the aggregation .
 
-#### _Window Behavior:_
+#### *Window Behavior:*
 
 **SLIDINGAGG operates with windows that slide over time**1 \.... For
 each point in time, the aggregate is calculated based on the data within
@@ -1657,7 +1638,7 @@ time.
 boundaries, anchored to the nearest midnight UTC**. The aggregate is
 calculated for these discrete, non-overlapping time intervals .
 
-#### _Real-time vs. Retrospective Analysis:_
+#### *Real-time vs. Retrospective Analysis:*
 
 SLIDINGAGG provides a consistent view of the aggregated data in both
 real-time and when looking back at historical data because the
@@ -1670,13 +1651,13 @@ has fully elapsed**. Until the end of the window, the aggregate value
 within that window. Therefore, **WINDOWAGG is considered more of a
 retrospective function**12 .
 
-#### _Performance:_
+#### *Performance:*
 
 WINDOWAGG is generally **more performant than SLIDINGAGG** when the
 historian natively supports aggregate queries, as it reduces the amount
 of data that needs to be transferred and computed.
 
-#### _Handling of Peaks:_
+#### *Handling of Peaks:*
 
 In SLIDINGAGG, a peak value within the sliding window will influence the
 aggregate output for the entire duration the peak remains within that
@@ -1690,7 +1671,7 @@ aggregate for the entire window. For example, a peak occurring in the
 current value for 1 minute but then the whole prior window will take on
 that value as soon as the window period rolls over to a new one.
 
-#### _Use Cases:_
+#### *Use Cases:*
 
 SLIDINGAGG is suitable for applications where a continuously updating
 aggregate value based on a recent time window is required, such as
@@ -1731,8 +1712,8 @@ know how much we produce per quarter, then the "Window size" should be
 option.
 
 For "Window Offset or Anchor" we will select "BEGIN_QUARTER", this means
-that it will start from 0 each quarter (1^st^ January, 1^st^ April,
-1^st^ July and 1^st^ October). And lastly, we will add the "Data Rate"
+that it will start from 0 each quarter (1<sup>st</sup> January, 1<sup>st</sup> April,
+1<sup>st</sup> July and 1<sup>st</sup> October). And lastly, we will add the "Data Rate"
 from our tag, since this example has a tag with m3/h, the data rate will
 be "1h" for 1 hour. For 1 second the value would be "1s", for daily
 rates it would be "1d", etc. Here is the input from our example and how
@@ -1754,7 +1735,8 @@ performance of calculations and avoiding errors.
 Trending a calculation over a large time period can result in a point
 limit error such as:
 
-This SLIDINGAGG request needs to retrieve 52,560 points, but limit is 30000. Try reducing requested range or increasing sliding window size.
+This SLIDINGAGG request needs to retrieve 52,560 points, but limit is
+30000. Try reducing requested range or increasing sliding window size.
 Reason is that to keep results precise, SLIDINGAGG retrieves at least 3
 points for each window that fit in requested range.
 
@@ -1767,9 +1749,5 @@ averages) the request is 365\*2\*24\*3 = 52,560.
 
 #
 
-_For more information, please contact us at <info@eigen.co> or book a
-demo on our website at [www.eigen.co](http://www.eigen.co)_
-
-[^1]: The default number is configurable per subscription.
-
-[^2]: https://reference.opcfoundation.org/Core/Part8/v104/docs/6.3.2
+*For more information, please contact us at <info@eigen.co> or book a
+demo on our website at [www.eigen.co](http://www.eigen.co)*
