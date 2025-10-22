@@ -51,16 +51,6 @@ export default defineConfig({
           },
           autogenerate: { directory: 'docs' },
         },
-        {
-          label: 'Components',
-          autogenerate: { directory: 'components' },
-          translations: {
-            no: 'Komponenter',
-            pl: 'Komponenty',
-            es: 'Componentes',
-            az: 'Komponentlər',
-          },
-        },
       ],
       plugins: [starlightThemeNova()],
     }),
