@@ -1730,7 +1730,7 @@ incorrect.](~/assets/calculations/image34.png)
 The following chapter contains recommendations for improving the
 performance of calculations and avoiding errors.
 
-## 5.1 Point limit errors.
+## 5.1 Point limit error.
 
 Trending a calculation over a large time period can result in a point
 limit error such as:
