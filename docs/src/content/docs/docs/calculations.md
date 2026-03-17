@@ -1725,7 +1725,7 @@ incorrect.](~/assets/calculations/image33.png)
 ![A green line on a white background AI-generated content may be
 incorrect.](~/assets/calculations/image34.png)
 
-# 5 Common errors and how to avoid them
+# 5 Common errors and how to avoid them.
 
 The following chapter contains recommendations for improving the
 performance of calculations and avoiding errors.
