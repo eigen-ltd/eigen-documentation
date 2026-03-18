@@ -436,75 +436,15 @@ code but any calculations will continue to work.
 
 ### 2.7.1 TOTALISE
 
-The TOTALISE function is the original integral function and sums the
-area under a trend within the defined Window. TOTALISE does not adjust
-for uneven time periods or daylight savings.
-
-**[It is recommended to use TOTALISE2 for any new
-calculations.]{.mark}**
-
-It will follow the selected interpolation mode on a trend. I.e. if the
-series is set to INTERPOLATED mode then the Totalise2 calculation will
-request interpolated points when it is being evaluated. This will result
-in the fastest performance but may give discrepancies vs raw data
-
-The syntax for the TOTALISE function is:
-
-```
-TOTALISE(input, window, windowAnchor, rate)
-```
-
-- **input** -- any valid timeseries input (see [section 2.2](#22-valid-timeseries-inputs))
-
-- **window** -- a window size to totalise over (fixed amount of
-  seconds/minutes/hours/days)
-
-- **windowOffsetOrAnchor** -- where this window should be placed and is
-  as an offset from 00:00:00 GMT
-
-- **rate** -- time unit for underlying tag, if it is m3/s then the time
-  unit is seconds, so you would write "1s", if m3/h then unit is hours,
-  so you would write "1h" (required to properly scale result)
-
-#### *Window Definition*
-
-The Window can be defined as:
-
-- an exact time definition (1s, 12h, 7d, 1w) -- see [section 2.2](#22-valid-timeseries-inputs)
-
-#### *windowAnchor definition*
-
-This defines where the start of the totalisation is placed. The options
-are:
-
-- an offset from 00:00:00 GMT. Negative values shift the start earlier,
-  and positive values shift it later (e.g. -02:00 to align with European
-  summer time - CEST)
-
-  *Note: This option will not automatically adjust for daylight savings
-  time when the clocks shift back in the autumn.*
-
-- a fixed point in time with optionally specified timezone in the format
-  "YYYY-MM-DD hh:mm:ss ZZZz" (e.g. 2024-04-01 00:00:00 CEST).
-
-  *Note: This option is the least efficient as the algorithm will go back
-  to this date every time it is evaluated*
-
-### 2.7.2 TOTALISE2
-
-The Totalise2 function is a newer and more powerful version of the
-TOTALISE function. At some point the TOTALISE2 logic will replace the
-TOTALISE logic and they will both work the same way.
-
-The Totalise2 calculation is probably the most used function will follow
+The TOTALISE calculation is probably the most used function will follow
 the selected interpolation mode on a trend. I.e. if the series is set to
-INTERPOLATED mode then the Totalise2 calculation will request
+INTERPOLATED mode then the TOTALISE calculation will request
 interpolated points when it is being evaluated. This will result in the
 fastest performance but may give discrepancies vs raw data
 
-The syntax for the TOTALISE2 function is:
+The syntax for the TOTALISE function is:
 
-TOTALISE2(input, window, windowOffsetOrAnchor, rate)
+TOTALISE(input, window, windowOffsetOrAnchor, rate)
 
 - **input** -- any valid timeseries input (see [section 2.2](#22-valid-timeseries-inputs))
 
@@ -622,9 +562,17 @@ these values will result in errors and so it may be necessary to wrap
 the tag in a STEPPED() calculation or use TOTALISERAW to make sure that
 the data is properly interpolated and totalized.*
 
-### 2.7.3 Totalise Raw
+  
 
-The TotaliseRaw function is identical to the Totalise function except
+### 2.7.2 TOTALISE2
+
+The TOTALISE2 function is the same as the TOTALISE function from Ingenuity back-end version ei-v6.88.0 (20th November 2025). TOTALISE2 was originally created as an improved version of the totaliser and then replace the original logic. The function name can still be used to make sure any content created with TOTALISE2 still works.
+
+
+
+### 2.7.3 TOTALISE RAW
+
+The TOTALISERAW function is identical to the TOTALISE function except
 that it will force the calculation to use Raw data when it is evaluated,
 regardless of the Interpolation mode on the trend. This can result in
 slow performance if there is a lot of data, but it will be very
