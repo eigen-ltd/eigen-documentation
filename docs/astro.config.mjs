@@ -42,14 +42,101 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
-          label: 'Documentation',
-          translations: {
-            no: 'Dokumentasjon',
-            pl: 'Dokumentacja',
-            es: 'Documentación',
-            az: 'Dokumentasiya',
+          label: 'V1 Documentation',
+          autogenerate: {
+            directory: 'docs',
           },
-          autogenerate: { directory: 'docs' },
+        },
+        {
+          label: 'Developing with Eigen',
+          items: [
+            {
+              label: 'Excel Addin',
+              autogenerate: {
+                directory: 'developing-with-eigen/excel-addin',
+              },
+            },
+            {
+              label: 'Python Library',
+              items: [
+                {
+                  label: 'Intro to the Python SDK',
+                  link: '/developing-with-eigen/python-library/overview',
+                },
+                {
+                  label: 'Authentication',
+                  link: '/developing-with-eigen/python-library/authentication',
+                },
+                {
+                  label: 'Historian Multi',
+                  autogenerate: {
+                    directory: 'developing-with-eigen/python-library/Historian Multi',
+                  },
+                },
+                {
+                  label: 'Asset Model',
+                  autogenerate: {
+                    directory: 'developing-with-eigen/python-library/Asset Model',
+                  },
+                },
+
+                {
+                  label: 'Common Menu',
+                  autogenerate: {
+                    directory: 'developing-with-eigen/python-library/Common Menu',
+                  },
+                },
+                {
+                  label: 'Eventlog',
+                  autogenerate: {
+                    directory: 'developing-with-eigen/python-library/Eventlog',
+                  },
+                },
+                {
+                  label: 'SQL',
+                  autogenerate: {
+                    directory: 'developing-with-eigen/python-library/SQL',
+                  },
+                },
+                {
+                  label: 'Historian',
+                  badge: {
+                    text: 'Deprecated',
+                    variant: 'danger',
+                  },
+                  items: [
+                    {
+                      label: 'The Legacy Historian Module',
+                      link: '/developing-with-eigen/python-library/historian/overview',
+                    },
+                  ],
+                },
+                {
+                  label: 'Elastic',
+                  badge: {
+                    text: 'Deprecated',
+                    variant: 'danger',
+                  },
+                  items: [
+                    {
+                      label: 'The Legacy Elastic Module',
+                      link: '/developing-with-eigen/python-library/elastic/overview',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              label: 'Office 365 Connector',
+              badge: {
+                text: 'TBA',
+                variant: 'caution',
+              },
+              autogenerate: {
+                directory: 'developing-with-eigen/office-connector',
+              },
+            },
+          ],
         },
       ],
       plugins: [starlightThemeNova()],
