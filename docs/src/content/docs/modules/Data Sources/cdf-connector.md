@@ -1,6 +1,9 @@
 ---
 title: 'CDF Connector'
 description: 'A guide to the Eigen Ingenuity CDF data connector, its features, and configuration.'
+sidebar:
+  order: 10
+
 ---
 
 # 1 Eigen Ingenuity data connector to Cognite Data Fusion
@@ -106,8 +109,6 @@ access to the data sources to be controlled using permissions withing
 Ingenuity.
 
 #
-
-End of Document
 
 _For more information, please contact us at <info@eigen.coor book a
 demo on our website at [www.eigen.co](http://www.eigen.co)_

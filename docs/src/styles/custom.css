@@ -1,3 +1,21 @@
 /* .nova-page-frame {
   justify-content: center;
 } */
+
+.sidebar-content ul ul .group-label span.large {
+  font-weight: normal;
+}
+.sidebar-content a[aria-current="page"] {
+  background-color: #f1c40f;
+  color: black;
+}
+
+.nova-pagination-link {
+  border: 2px solid #f1c40f;
+  border-radius: 8px;
+}
+
+.nova-pagination-link:hover {
+  background-color: #f1c40f;
+  color: black;
+}
