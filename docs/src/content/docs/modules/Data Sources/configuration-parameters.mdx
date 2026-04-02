@@ -1,0 +1,444 @@
+---
+title: Configuration Parameters Table
+description: An overview of the common errors that you may encounter when using the Ingenuity calculations module.
+sidebar:
+    order: 4
+---
+
+## 3.5 Reference table for all data source configuration parameters
+
+The following reference table lists all available configuration parameters for a data source template. 
+Parameters are grouped into tabs by category. Click a tab to browse that category, then click any 
+parameter to expand it and see the full details.
+
+Each parameter shows:
+- **Type** — the data type expected, e.g. `string`, `boolean`, `object`
+- **Required** — whether the parameter must be included
+- **Default** — the value used if the parameter is not specified
+- **Purpose** — what the parameter does
+- **Example** — an example value where applicable
+
+#
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+  <TabItem label="Top Level">
+
+<details>
+<summary>`url` — string | Required: Yes</summary>
+
+**Purpose:** Defines the base URL for the API request, supporting path parameters wrapped in `{{}}`.
+
+**Example:** `"https://api.carbonintensity.org.uk/generation"`, `"https://dummyjson.com/products/{{num}}"`
+
+</details>
+
+<details>
+<summary>`type` — string | Required: Yes</summary>
+
+**Purpose:** Defines the HTTP method used for the request.
+- `GET` — data is sent as part of the URL in query parameters
+- `POST` — data is sent in the request body
+- `POST_FORM` — content sent as a form rather than a JSON object
+
+**Example:** `"GET"`, `"POST"`
+
+</details>
+
+<details>
+<summary>`transform` — string | Required: No</summary>
+
+**Purpose:** Specifies an optional transformation function to apply to input or output data.
+
+**Example:** `"transformHistorianMultiValueInputs"`, `"transformHistorianMultiChartInputs"`
+
+</details>
+
+<details>
+<summary>`useProxy` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** Indicates whether the API request should be sent via the built-in proxy server. Must be `true` if authentication is set in the `headers` section to avoid CORS errors.
+
+**Example:** `true`, `false`
+
+</details>
+
+<details>
+<summary>`compatibleWith` — array | Required: Yes</summary>
+
+**Purpose:** Defines the types of components that can use the data from this data source.
+
+**Example:** `["table"]`, `["chart", "value"]`
+
+</details>
+
+<details>
+<summary>`trendWith` — string | Required: No</summary>
+
+**Purpose:** Optional data source ID of a data source with a trendable version of the parameter.
+
+**Example:** `"historian-multi-chart"`
+
+</details>
+
+<details>
+<summary>`batchSize` — number | Required: No</summary>
+
+**Purpose:** Specifies the batch size for requests.
+
+**Example:** `100`
+
+</details>
+
+<details>
+<summary>`isTrendable` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** Indicates if the data from this source can be used in trends.
+
+</details>
+
+<details>
+<summary>`isWriteable` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** Indicates if data can be written back to this source.
+
+</details>
+
+<details>
+<summary>`isUnique` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** Indicates if the data should be unique.
+
+</details>
+
+<details>
+<summary>`concurrentSize` — number | Required: No</summary>
+
+**Purpose:** Specifies the number of concurrent requests.
+
+</details>
+
+<details>
+<summary>`writeWith` — string | Required: No</summary>
+
+**Purpose:** Specifies another data source ID to use for writing data.
+
+</details>
+
+<details>
+<summary>`function` — string or function | Required: No</summary>
+
+**Purpose:** An optional function to be executed for data retrieval or transformation.
+
+**Example:** `'staticChart'`
+
+</details>
+
+  </TabItem>
+  <TabItem label="Inputs">
+
+<details>
+<summary>`inputs[].name` — string | Required: Yes</summary>
+
+**Purpose:** A machine-friendly name for the input.
+
+**Example:** `"AIRPORT_CODE"`, `"tag"`, `"num"`
+
+</details>
+
+<details>
+<summary>`inputs[].type` — string | Required: Yes</summary>
+
+**Purpose:** Specifies where the input parameter should be placed in the request.
+- `url` — substituted into the URL path e.g. `foo.io/{{bar}}`
+- `get` — appended to the URL as a query parameter
+- `body` — used with `POST_FORM`
+- `json` — used with `POST`
+- `header` — substituted into the request headers
+
+**Example:** `"url"`, `"get"`, `"header"`
+
+</details>
+
+<details>
+<summary>`inputs[].parameterName` — string | Required: Yes</summary>
+
+**Purpose:** The name of the parameter as it appears in the URL or request body.
+
+**Example:** `"arr_iata"`, `"timeZone"`
+
+</details>
+
+<details>
+<summary>`inputs[].label` — string | Required: No</summary>
+
+**Purpose:** A user-friendly label displayed above the input field in the UI.
+
+**Example:** `"3 letter airport code, e.g. LGW or JFK"`, `"Tag"`
+
+</details>
+
+<details>
+<summary>`inputs[].default` — string | Required: No</summary>
+
+**Purpose:** The default value to use if the user does not provide an input.
+
+**Example:** `"json"`, `"now"`, `"1"`
+
+</details>
+
+<details>
+<summary>`inputs[].format` — object | Required: No</summary>
+
+**Purpose:** Defines the format of the input value, especially useful for dates.
+
+| Property | Description |
+|----------|-------------|
+| `type` | The data type, e.g. `"date"` |
+| `pattern` | Format pattern, e.g. `"yyyy-MM-dd'T'HH:mm:ssXX"` |
+| `timeZone` | Timezone, e.g. `"CEST"` |
+
+</details>
+
+<details>
+<summary>`inputs[].isRequired` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** Indicates if this input is mandatory.
+
+</details>
+
+<details>
+<summary>`inputs[].isAdvanced` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** If true, the input is hidden under an "Advanced" section in the UI.
+
+</details>
+
+<details>
+<summary>`inputs[].isChartStart` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** If true, this input will use the chart's start time. Only one input can have this set to true. See `isChartEnd` for usage.
+
+</details>
+
+<details>
+<summary>`inputs[].isChartEnd` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** If true, this input will use the chart's end time. Only one input can have this set to true. For charts/tables, any `isChartEnd` input will be set to the End value in the widget's live options.
+
+</details>
+
+<details>
+<summary>`inputs[].isHidden` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** If true, the input is not visible in the UI but is still configurable during installation.
+
+</details>
+
+<details>
+<summary>`inputs[].isConfigurable` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** If true, this input is shown during data source installation for one-time configuration.
+
+</details>
+
+<details>
+<summary>`inputs[].isCode` — string | Required: No</summary>
+
+**Purpose:** If set to `"sql"`, displays an SQL formatted text box for user input.
+
+</details>
+
+<details>
+<summary>`inputs[].multi` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** Indicates if multiple values can be selected for this input.
+
+</details>
+
+<details>
+<summary>`inputs[].encode` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** Indicates if the input value should be URL-encoded.
+
+</details>
+
+<details>
+<summary>`inputs[].transform` — string | Required: No</summary>
+
+**Purpose:** Specifies a transformation to apply to this input.
+
+**Example:** `"transformSmartdashInput"`
+
+</details>
+
+<details>
+<summary>`inputs[].showBasket` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** If true, this input can be added to the basket for bulk actions.
+
+</details>
+
+<details>
+<summary>`inputs[].showTagEdit` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** If true, displays a search icon for searching tags.
+
+</details>
+
+<details>
+<summary>`inputs[].showStaleAfter` — boolean | Required: No | Default: false</summary>
+
+**Purpose:** Enables a staleness indicator on components using this data, useful for live or frequently changing data.
+
+</details>
+
+  </TabItem>
+  <TabItem label="Outputs">
+
+<details>
+<summary>`output.paths[].name` — string | Required: Yes</summary>
+
+**Purpose:** The human-readable name for the output field.
+
+**Example:** `"biomass"`, `"value"`, `"x"`
+
+</details>
+
+<details>
+<summary>`output.paths[].path` — string | Required: Yes</summary>
+
+**Purpose:** The JSONPath expression to locate the desired value in the API response.
+
+**Example:** `"$.data.generationmix[?(@.fuel === 'biomass')].perc"`
+
+</details>
+
+<details>
+<summary>`output.paths[].type` — string | Required: No</summary>
+
+**Purpose:** The data type of the output value.
+
+**Example:** `"date"`
+
+</details>
+
+<details>
+<summary>`output.paths[].label` — string | Required: No</summary>
+
+**Purpose:** Helpful text shown to the user for this output field.
+
+</details>
+
+<details>
+<summary>`output.paths[].default` — string | Required: No</summary>
+
+**Purpose:** The default value if no value is found in the API response.
+
+</details>
+
+<details>
+<summary>`output.paths[].format` — object | Required: No</summary>
+
+**Purpose:** Defines the format of the output value, especially for dates.
+
+| Property | Description |
+|----------|-------------|
+| `type` | The data type, e.g. `"date"` |
+| `pattern` | Format pattern, e.g. `"yyyy-MM-dd'T'HH:mm:ssXX"` |
+
+</details>
+
+<details>
+<summary>`output.transform` — string | Required: No</summary>
+
+**Purpose:** Specifies a transformation function to apply to the output data.
+
+**Example:** `"transformSmartdash"`, `"transformHistorianMultiValue"`
+
+</details>
+
+  </TabItem>
+  <TabItem label="Headers & Errors">
+
+<details>
+<summary>`headers` — object | Required: No</summary>
+
+**Purpose:** Key-value pairs representing custom headers to be included in the API request.
+
+**Example:** `{"Authorization": "..."}`, `{"Content-Type": "application/json"}`
+
+</details>
+
+<details>
+<summary>`headers.Authorization` — string | Required: No</summary>
+
+**Purpose:** Authorization header value. Must be base64 encoded. See [base64encode.org](https://www.base64encode.org/).
+
+</details>
+
+<details>
+<summary>`errorPath` — object | Required: No</summary>
+
+**Purpose:** Defines the path to error information in the API response.
+
+**Example:** `{"message": "$.error.message"}`
+
+</details>
+
+<details>
+<summary>`errorPath.label` — string | Required: No</summary>
+
+**Purpose:** Helpful text for the error message field.
+
+</details>
+
+<details>
+<summary>`errorPath.message` — string | Required: Yes</summary>
+
+**Purpose:** The JSONPath to the error message in the response.
+
+**Example:** `"$.error.message"`
+
+</details>
+
+  </TabItem>
+  <TabItem label="Metadata">
+
+<details>
+<summary>`Metadata.Name` — string | Required: Yes</summary>
+
+**Purpose:** The user-friendly name of the data source shown to users.
+
+**Example:** `"UK Carbon Intensity"`, `"Eigen Ingenuity Historian"`
+
+</details>
+
+<details>
+<summary>`Metadata.nameID` — string | Required: Yes</summary>
+
+**Purpose:** The machine-friendly name used by the code. Should not contain spaces.
+
+**Example:** `"uk-carbon-intensity"`, `"eigen-historian"`
+
+</details>
+
+<details>
+<summary>`Metadata.Description` — string | Required: Yes</summary>
+
+**Purpose:** A detailed explanation of the data source, including any limitations such as request limits.
+
+**Example:** `"Queries the UK carbon intensity API..."`
+
+</details>
+
+<details>
+<summary>`Metadata.Image` — string | Required: No</summary>
+
+**Purpose:** Optional image to help users identify the data source. Configured automatically by the Upload Image wizard. Accepts png, jpg or svg.
+
+</details>
+
+  </TabItem>
+</Tabs>

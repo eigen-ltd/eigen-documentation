@@ -42,9 +42,18 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
-          label: 'V1 Documentation',
+          label: 'Getting Started',
           autogenerate: {
-            directory: 'docs',
+            directory: 'getting-started',
+            collapsed:true,
+          },
+        },
+
+        {
+          label: 'Ingenuity Modules',
+          autogenerate: {
+            directory: 'modules',
+            collapsed: true,
           },
         },
         {
