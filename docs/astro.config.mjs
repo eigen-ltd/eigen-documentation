@@ -5,6 +5,9 @@ import dotenv from 'dotenv';
 import AutoImport from 'astro-auto-import';
 import astroExpressiveCode from 'astro-expressive-code';
 
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
 dotenv.config();
 
 const site = process.env.SITE_URL || 'http://localhost:4321/';
@@ -20,6 +23,10 @@ export const locales = {
 // https://astro.build/config
 export default defineConfig({
   site,
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
   integrations: [
     starlight({
       expressiveCode: {
@@ -58,15 +65,18 @@ export default defineConfig({
         },
         {
           label: 'Developing with Eigen',
+          collapsed: true,
           items: [
             {
               label: 'Excel Addin',
+              collapsed: true,
               autogenerate: {
                 directory: 'developing-with-eigen/excel-addin',
               },
             },
             {
               label: 'Python Library',
+              collapsed: true,
               items: [
                 {
                   label: 'Intro to the Python SDK',
@@ -137,6 +147,7 @@ export default defineConfig({
             },
             {
               label: 'Office 365 Connector',
+              collapsed: true,
               badge: {
                 text: 'TBA',
                 variant: 'caution',
@@ -147,6 +158,12 @@ export default defineConfig({
             },
           ],
         },
+        // { // An example comparison of Markdown vs LaTeX. Commented to not deploy to site.
+        //   label: 'LaTeX Testing',
+        //   autogenerate: {
+        //     directory: 'testing',
+        //   },
+        // },
       ],
       plugins: [starlightThemeNova()],
     }),
